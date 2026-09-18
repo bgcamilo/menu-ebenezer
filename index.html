@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Menú Ebenezer">
+    <title>Menú Ebenezer</title>
+    <style>
+      :root { color-scheme: light; font-family: Arial, sans-serif; color: #24201b; background: #f7f0e4; }
+      * { box-sizing: border-box; }
+      body { margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 24px; }
+      main { width: min(100%, 760px); background: #fffdf8; border: 1px solid #dacdb9; border-radius: 18px; padding: clamp(24px, 6vw, 48px); text-align: center; box-shadow: 0 16px 48px #583d1b22; }
+      h1 { margin: 0 0 10px; font-family: Georgia, serif; font-size: clamp(2rem, 7vw, 3.5rem); }
+      p { margin: 0 auto 26px; max-width: 48ch; color: #5e5143; line-height: 1.5; }
+      .actions { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-bottom: 30px; }
+      a { display: inline-block; padding: 13px 18px; border-radius: 9px; color: #fff; background: #704622; text-decoration: none; font-weight: 700; }
+      a.secondary { color: #704622; background: #f0e2cd; }
+      .qr-card { display: inline-block; padding: 18px; border: 1px solid #eadfce; border-radius: 12px; background: #fff; }
+      #qrcode { width: 220px; height: 220px; margin: 0 auto 10px; }
+      #qrcode img, #qrcode canvas { display: block; width: 220px !important; height: 220px !important; }
+      .hint { font-size: .88rem; margin: 0; color: #766a5e; }
+      @media print { body { padding: 0; background: #fff; } main { box-shadow: none; border: 0; } .actions, .intro { display: none; } }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Menú Ebenezer</h1>
+      <p class="intro">Consulta nuestro menú completo o descárgalo en formato PDF.</p>
+      <div class="actions">
+        <a href="menu%20ebenezer%20pergamino%2030x60.pdf" target="_blank" rel="noopener">Ver menú PDF</a>
+        <a class="secondary" href="menu%20ebenezer%20pergamino%2030x60.pdf" download>Descargar PDF</a>
+      </div>
+      <section class="qr-card" aria-label="Código QR del menú">
+        <div id="qrcode" aria-label="Código QR"></div>
+        <p class="hint">Escanea para abrir este menú</p>
+      </section>
+    </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+      new QRCode(document.getElementById('qrcode'), {
+        text: window.location.href,
+        width: 220,
+        height: 220,
+        colorDark: '#17120e',
+        colorLight: '#ffffff',
+        correctLevel: QRCode.CorrectLevel.H
+      });
+    </script>
+  </body>
+</html>
